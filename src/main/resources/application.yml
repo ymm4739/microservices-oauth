@@ -1,0 +1,37 @@
+server:
+  port: 8100
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 182.92.5.78:8848
+        weight: 1
+
+    sentinel:
+      transport:
+        dashboard: 182.92.5.78:8180
+        port: 8719
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:47.110.32.181}:${DATASOURCE_PORT:3306}/microservices-usercenter?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:1nncore.co.ltd}
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.ymm.microservices.oauth.entity
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-delete-field: deleted
+      id-type: auto
+
+
+feign:
+  sentinel:
+    enabled: true
+
+logging:
+  level:
+    root: warn
+    com.ymm.microservices.oauth: debug
