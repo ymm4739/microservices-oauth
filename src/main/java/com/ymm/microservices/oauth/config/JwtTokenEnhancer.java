@@ -1,6 +1,7 @@
 package com.ymm.microservices.oauth.config;
 
 import com.ymm.microservices.oauth.UserInfo;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -14,6 +15,7 @@ import java.util.Map;
 @Component
 public class JwtTokenEnhancer implements TokenEnhancer {
 
+    @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
         UserInfo userInfo = (UserInfo) oAuth2Authentication.getPrincipal();
         Map<String, Object> map = new HashMap<String, Object>();

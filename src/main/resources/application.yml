@@ -32,6 +32,12 @@ mybatis-plus:
 feign:
   sentinel:
     enabled: true
+  client:
+    config:
+      user-center:
+        loggerLevel: full
+  httpclient:
+    enabled: true
 
 logging:
   level:
